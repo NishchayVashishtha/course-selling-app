@@ -15,7 +15,7 @@ app.use("/course", courseRouter);
 app.use("/admin", adminRouter)
 
 async function main() {
-    await mongoose.connect("mongodb+srv://nishchay:Vashishtha_4002@nishchay.5f5jqxw.mongodb.net/course-app");
+    await mongoose.connect(env.MONGO_URL);
 app.listen(3000);
 }
 
