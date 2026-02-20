@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { userModel } = require("../db");
+const { userModel, purchaseModel } = require("../db");
 const { z } = require("zod");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -91,8 +91,13 @@ userRouter.get("/purchases", userMiddleware, async function(req, res) {
     const purchases = await purchaseModel.find({
         userId
     })
+
+    const coursesData = await courseModel.find({
+        _id : { $in : purchases.map(x => x.courseId) }
+    })
     res.json({
-        purchases
+        purchases,
+        coursesData
     })
 })
 

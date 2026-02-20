@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const courseRouter = Router();
 const { userMiddleware } = require("../middleware/user");
+const { courseModel, purchaseModel } = require("../db");
 
 courseRouter.post("/purchase", userMiddleware, async function(req, res) {
     const userId = req.userId;
