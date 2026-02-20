@@ -6,7 +6,7 @@ const { userRouter } = require("./routes/user");
 const { courseRouter } = require("./routes/course");
 const { adminRouter } = require("./routes/admin");
 const { userMiddleware } = require("./middleware/user");
-const { adminMiddleware } = require("../middleware/admin");
+const { adminMiddleware } = require("./middleware/admin");
 const app = express();
 
 app.use(express.json());
