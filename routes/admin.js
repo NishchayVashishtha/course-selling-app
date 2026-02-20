@@ -99,13 +99,28 @@ adminRouter.post("/course", adminMiddleware, async function(req, res) {
 
     res.json({
         message : "course created",
-        courseId : adminId
+        courseId : course._id
     })
 })
 
-adminRouter.delete("/", function(req, res) {
+adminRouter.put("/course",adminMiddleware, async function(req, res) {
+
+    const course = await courseModel.updateOne({
+        _id : courseId,
+        creatorId : adminId
+    }, {
+        title,
+        description,
+        imageURL,
+        price
+    })
+
     message.json({
-        message : "admin create course Endpoint!"
+        message : "Course updated:"
+    })
+
+    res.json({
+        courseId : course._id
     })
 })
 
